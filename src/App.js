@@ -1,7 +1,19 @@
 import React, { Component } from "react";
+import UserInput from "./UserInput";
+import UserOutput from "./UserOutput";
 import "./App.css";
 
 class App extends Component {
+  state = {
+    username: "Joe"
+  };
+
+  changeUsernameHandler = event => {
+    this.setState({
+      username: event.target.value
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -42,6 +54,12 @@ class App extends Component {
             components - both with inline styles and stylesheets
           </li>
         </ol>
+        <UserInput
+          username={this.state.username}
+          changed={this.changeUsernameHandler}
+        />
+        <UserOutput username={this.state.username} />
+        <UserOutput username={this.state.username} />
       </div>
     );
   }
